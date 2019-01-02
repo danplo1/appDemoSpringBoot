@@ -29,7 +29,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void saveUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setActive(1); // ustawienie wartości czy użytkownik może się logować (user: 0-nieaktywny, 1-aktywny)
+		user.setActive(1); // ustawienie wartości czy użytkownik może się logować (user: 0-nieaktywny,
+							// 1-aktywny)
 
 		Role role = roleRepository.findByRole("ROLE_ADMIN");
 		user.setRoles(new HashSet<Role>(Arrays.asList(role)));

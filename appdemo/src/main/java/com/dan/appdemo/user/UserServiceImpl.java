@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 		user.setActive(1); // ustawienie wartości czy użytkownik może się logować (user: 0-nieaktywny,
 							// 1-aktywny)
 
-		Role role = roleRepository.findByRole("ROLE_ADMIN");
+		Role role = roleRepository.findByRole("ROLE_USER");
 		user.setRoles(new HashSet<Role>(Arrays.asList(role)));
 
 		userRepository.save(user); // metoda do zapisywania naszego użytkownika w bazie danych

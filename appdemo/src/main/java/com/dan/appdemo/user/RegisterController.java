@@ -36,23 +36,22 @@ public class RegisterController {
 	@RequestMapping(value = "/adduser")
 	public String registerAction(User user, BindingResult result, Model model, Locale locale) {
 
-		String returnPage = null;
+		String returnPage = null; //przechowuje nazwę strony, teraz null
 
-		User userExist = userService.findUserByEmail(user.getEmail());
+		User userExist = userService.findUserByEmail(user.getEmail()); //sprawdzamy czy taki email jest juz zarejestrowany
+		
+		new UserRegisterValidator().validateEmailExist(userExist, result);
 		new UserRegisterValidator().validate(user, result);
 
-		if (userExist != null) {
-			result.rejectValue("email", messageSource.getMessage("error.userEmailExist", null, locale));
-		}
-
+	
 		if (result.hasErrors()) {
 			returnPage = "register";
 		} else {
 			
 			userService.saveUser(user);
-			model.addAttribute("message", messageSource.getMessage("user.register.success.email", null, locale));
+			model.addAttribute("message", messageSource.getMessage("user.register.success", null, locale));
 			model.addAttribute("user", new User());
-			returnPage = "index";
+			returnPage = "register";
 		}
 
 		return returnPage;

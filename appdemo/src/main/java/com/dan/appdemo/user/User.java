@@ -55,8 +55,13 @@ public class User {
 	
 	@Transient //oznacza,że przy operacjach insert/update, ta składowa -przezroczysta- będzie pomijana, coś pomocniczego
 	private String operation;
+	
+	@Transient
+	private int RoleNumber;
 
 	// gettery i settery
+
+	
 
 	public int getId() {
 		return id;
@@ -122,6 +127,12 @@ public class User {
 		this.operation = operation;
 	}
 	
-	
+	public int getRoleNumber() {
+		return RoleNumber;
+	}
+
+	public void setRoleNumber(int roleNumber) {
+		RoleNumber = roleNumber;
+	}
 
 }

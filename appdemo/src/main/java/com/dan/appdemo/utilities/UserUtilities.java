@@ -14,7 +14,7 @@ public class UserUtilities {
 
 		if (!(auth instanceof AnonymousAuthenticationToken)) { // jeżeli nie jest przechowowane coś co ma anonymousa, to
 																// pobieramy z contextu nazwę
-																// zalogowanego uzytkowanika inczej zwróci nam nulla
+																// zalogowanego uzytkowanika inczej zwróci nam username
 			username = auth.getName();
 
 			return username;

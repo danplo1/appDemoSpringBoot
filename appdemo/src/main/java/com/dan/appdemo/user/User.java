@@ -58,10 +58,11 @@ public class User {
 	
 	@Transient
 	private int RoleNumber;
-
-	// gettery i settery
-
 	
+	@Transient
+	private String newPassword;
+	
+	// gettery i settery
 
 	public int getId() {
 		return id;
@@ -134,5 +135,16 @@ public class User {
 	public void setRoleNumber(int roleNumber) {
 		RoleNumber = roleNumber;
 	}
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+	
+	
+	
 
 }

@@ -38,5 +38,10 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(user); // metoda do zapisywania naszego użytkownika w bazie danych
 
 	}
+	
+	@Override
+	public void updateUserPassword(String newPassword, String email) {
+		userRepository.updateUserPassword(bCryptPasswordEncoder.encode(newPassword), email);// hashujemy nowe hasło, drugi paramter email
+	}
 
 }

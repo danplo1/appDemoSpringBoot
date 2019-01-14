@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void updateUserPassword(String newPassword, String email) {
-		userRepository.updateUserPassword(bCryptPasswordEncoder.encode(newPassword), email);// hashujemy nowe hasło, drugi paramter email
+		userRepository.updateUserPassword(bCryptPasswordEncoder.encode(newPassword), email);// hashujemy nowe hasło, drugi parametr email
 	}
 
 }

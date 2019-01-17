@@ -25,14 +25,14 @@ public class UserRegisterValidator implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, "password", "error.userPassword.empty");
 
 		if (!u.getEmail().equals(null)) {
-			boolean isMatch = AppDemoUtils.checkEmailOrPassword(AppDemoConstants.emailPattern, u.getEmail());
+			boolean isMatch = AppDemoUtils.checkEmailOrPassword(AppDemoConstants.EMAIL_PATTERN, u.getEmail());
 			if (!isMatch) {
 				errors.rejectValue("email", "error.userEmailIsNotMatch");
 			}
 		}
 
 		if (!u.getPassword().equals(null)) {
-			boolean isMatch = AppDemoUtils.checkEmailOrPassword(AppDemoConstants.passwordPattern, u.getPassword());
+			boolean isMatch = AppDemoUtils.checkEmailOrPassword(AppDemoConstants.PASSWORD_PATTERN, u.getPassword());
 			if (!isMatch) {
 				errors.rejectValue("password", "error.userPasswordIsNotMatch");
 			}

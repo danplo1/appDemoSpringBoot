@@ -30,7 +30,7 @@ public class ChangePasswordValidator implements Validator {
 		// metoda z dwoma argumentami: nowe hasło na formularzu i to co wróci w przypadku błędów
 
 		if (!newPass.equals(null)) {
-			boolean isMatch = AppDemoUtils.checkEmailOrPassword(AppDemoConstants.passwordPattern, newPass);
+			boolean isMatch = AppDemoUtils.checkEmailOrPassword(AppDemoConstants.PASSWORD_PATTERN, newPass);
 			if (!isMatch) {
 				errors.rejectValue("newPassword", "error.userPasswordIsNotMatch");
 			}

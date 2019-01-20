@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dan.appdemo.utilities.UserUtilities;
 import com.dan.appdemo.validators.ChangePasswordValidator;
+import com.dan.appdemo.validators.EditUserProfileValidator;
 
 @Controller
 public class ProfilController {
@@ -68,7 +69,39 @@ public class ProfilController {
 			model.addAttribute("message", messageSource.getMessage("passwordChange.success", null, locale));
 		}
 		return returnPage;
-
 	}
 
+	@GET
+	@RequestMapping(value = "/editprofil" )
+	public String changeUserData (Model model) {
+		
+		String username = UserUtilities.getLoggedUser();
+		User user = userService.findUserByEmail(username);
+		model.addAttribute("user", user);
+		return "editprofil";
+		
+	}
+	
+	@POST
+	@RequestMapping(value="/updateprofil")
+	public String changeUserDataAction(User user, BindingResult result, Model model, Locale locale) {
+		String returnPage = null;
+		new EditUserProfileValidator().validate(user, result);
+		if(result.hasErrors()) {
+			returnPage ="editprofil";
+		}else{
+			
+			userService.updateUserProfile(user.getName(), user.getLastName(), user.getEmail(), user.getId());
+			returnPage = "editprofil";
+			model.addAttribute("message", messageSource.getMessage("profilEdit.succes", null, locale));
+			returnPage = "afteredit";
+			
+		}
+		
+		return returnPage;
+		
+		
+	}
+	
+	
 }

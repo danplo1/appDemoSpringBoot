@@ -92,7 +92,6 @@ public class ProfilController {
 		}else{
 			
 			userService.updateUserProfile(user.getName(), user.getLastName(), user.getEmail(), user.getId());
-			returnPage = "editprofil";
 			model.addAttribute("message", messageSource.getMessage("profilEdit.succes", null, locale));
 			returnPage = "afteredit";
 			

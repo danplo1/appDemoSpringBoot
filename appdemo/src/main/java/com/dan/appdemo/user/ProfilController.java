@@ -7,6 +7,7 @@ import javax.ws.rs.POST;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,7 @@ import com.dan.appdemo.validators.ChangePasswordValidator;
 import com.dan.appdemo.validators.EditUserProfileValidator;
 
 @Controller
+
 public class ProfilController {
 
 	@Autowired
@@ -27,6 +29,7 @@ public class ProfilController {
 
 	@GET
 	@RequestMapping(value = "/profil")
+	
 	public String showUserProfilePage(Model model) {
 		String username = UserUtilities.getLoggedUser();
 
@@ -43,6 +46,7 @@ public class ProfilController {
 
 	@GET
 	@RequestMapping(value = "/editpassword")
+	@Secured(value = {"ROLE_USER", "ROLE_ADMIN"})
 	public String editUserPassword(Model model) {
 		String username = UserUtilities.getLoggedUser();
 		User user = userService.findUserByEmail(username);

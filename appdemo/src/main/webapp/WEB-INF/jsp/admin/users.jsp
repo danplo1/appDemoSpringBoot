@@ -50,7 +50,7 @@ function startSerach(pParam){
 		<td width="190" align="center"><b><s:message code="register.lastName"/></b></td>
 		<td width="200" align="center"><b><s:message code="register.email"/></b></td>
 		<td width="100" align="center"><b><s:message code="profil.czyAktywny"/></b></td>
-		<td width="190" align="center"><b><s:message code="profil.rola"/></b></td>
+		<td width="190" align="center"><b><s:message code="profil.role"/></b></td>
 		<td width="50"></td>
 	</tr>
 	<c:forEach var="u" items="${userList }">
@@ -73,7 +73,7 @@ function startSerach(pParam){
 			</td>
 			<td align="center">
 			<c:choose>
-				<c:when test="${u.nrRoli == 1 }">
+				<c:when test="${u.RoleNumber == 1 }">
 					<font color="green"><s:message code="word.admin"/></font>
 				</c:when>
 				<c:otherwise>
@@ -83,7 +83,7 @@ function startSerach(pParam){
 			</td>
 			<td>
 			<c:choose>
-				<c:when test="${u.nrRoli == 1 }">
+				<c:when test="${u.RoleNumber == 1 }">
 					<img src="/resources/images/deliconinact.png" width="16" height="16"/>
 				</c:when>
 				<c:otherwise>
